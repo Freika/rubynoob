@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @repository.name
+p
+  strong Description:
+  = @repository.description
+p
+  strong Url:
+  = @repository.url
+p
+  strong User:
+  = @repository.user_id
+
+= link_to 'Edit', edit_repository_path(@repository)
+'|
+= link_to 'Back', repositories_path

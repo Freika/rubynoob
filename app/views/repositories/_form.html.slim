@@ -1,0 +1,7 @@
+.col-md-4
+  = form_for @repository do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+
+    = f.submit 'Add repo', class: 'btn btn-primary'
