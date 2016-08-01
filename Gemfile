@@ -14,7 +14,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate', '~> 3.1.0'
 
 gem 'devise'
+gem 'omniauth-github'
 gem 'pundit'
+
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -38,7 +41,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rspec', require: false
-  gem 'switch_user'
   gem 'annotate'
 end
 
