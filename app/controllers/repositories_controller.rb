@@ -18,7 +18,9 @@ class RepositoriesController < ApplicationController
   def create
     @repository = current_user.repositories.build(repository_params)
 
-    repo = @repository.seach_on_github(current_user.username, repository_params[:name])
+    repo = @repository.search_on_github(
+             current_user.username, repository_params[:name]
+           )
 
     if repo
       @repository = current_user.repositories.build(
