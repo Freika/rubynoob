@@ -21,6 +21,10 @@ gem 'figaro'
 
 gem 'octokit', '~> 4.0'
 
+gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra', require: false
+gem 'rack-protection', github: 'sinatra/rack-protection'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.4'
