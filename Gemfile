@@ -11,7 +11,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate'
 
 gem 'devise'
 gem 'omniauth-github'
@@ -20,6 +20,11 @@ gem 'pundit'
 gem 'figaro'
 
 gem 'octokit', '~> 4.0'
+
+gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra', require: false
+gem 'rack-protection', github: 'sinatra/rack-protection'
+gem 'crono'
 
 group :development, :test do
   gem 'byebug', platform: :mri

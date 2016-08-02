@@ -1,0 +1,12 @@
+table.table.table-hover
+  - @issues.each do |issue|
+    tr
+      td
+        = link_to issue.url.html_safe do
+          => image_tag(avatar_url(issue.repository.user.email, 20))
+          => "[#{issue.repository.name}]"
+          = "#{issue.name} ##{issue.number}"
+      td
+        span.label.label-danger.pull-right Proficient
+
+.text-center = will_paginate @issues
