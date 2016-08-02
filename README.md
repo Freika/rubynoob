@@ -1,24 +1,25 @@
-# README
+# Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The idea of project is to allow owners of open source repositories on github accept pull requests into their projects.
 
-Things you may want to cover:
+User adds his repo to site, creates issues for his repo on github, labels them as “RubyNoob” and, optionally, adds label with complexity description, and this issue will be parsed by application and added to database.
+Any visitor that sees it in the list of issues will be able to contribute his code to fix the issue helping to make the project better as a result
 
-* Ruby version
+# Todo
 
-* System dependencies
+~~User can register via Github (github-omniauth)~~
 
-* Configuration
+~~User can add his open source repositories (octokit)~~
 
-* Database creation
+~~All added repositories are pinged once in 3 minutes (sidekiq, crono)~~
 
-* Database initialization
+~~If open issue with label “RubyNoob” is found in the repo, those issues are parsed and added into app database~~
 
-* How to run the test suite
+If issue with “RubyNoob” label have either “Beginner”, “Intermediate” or “Proficient” label, it is added to issue record in app as a complexity level
 
-* Services (job queues, cache servers, search engines, etc.)
+If issue state changed to ‘closed’, it is archived
 
-* Deployment instructions
+If issue state changed to ‘closed, send email to repo owner and ask him to choose app user who provided solution
 
-* ...
+If repo owner choses user, “Impact” level for this user is increased
+Build rating table for users with high Impact level.
