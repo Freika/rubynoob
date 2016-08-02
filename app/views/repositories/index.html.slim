@@ -6,3 +6,5 @@ table.table.table-hover
           => image_tag(avatar_url(repo.user.email, 20))
           => "[#{repo.user.username}]"
           = repo.name
+
+.text-center = will_paginate @issues

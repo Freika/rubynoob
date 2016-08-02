@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: repositories
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :string
+#  url         :string
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Repository < ApplicationRecord
   belongs_to :user
   has_many :issues
