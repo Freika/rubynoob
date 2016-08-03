@@ -14,7 +14,18 @@
 #
 
 class Issue < ApplicationRecord
+  COMPLEXITY = %w(beginner intermediate proficient)
   belongs_to :repository
 
   validates :number, uniqueness: { scope: :repository_id }
+
+  enum complexity: [:beginner, :intermediate, :proficient]
+
+  def self.assign_complexity(data)
+    labels = data[:labels].map { |l| l[:name].downcase }
+
+    data[:complexity] = (labels && COMPLEXITY).first.to_sym
+
+    data
+  end
 end

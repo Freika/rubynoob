@@ -22,11 +22,13 @@ class Repository < ApplicationRecord
   end
 
   def get_issues
-    issues = Octokit.issues("#{user.username}/#{name}")
+    remote_issues = Octokit.issues("#{user.username}/#{name}")
 
-    issues.select do |issue|
-      labels = issue[:labels].map { |l| l[:name] }
-      labels.include?('RubyNoob')
-    end
+    issues = remote_issues.select do |issue|
+               labels = issue[:labels].map { |l| l[:name] }
+               labels.include?('RubyNoob')
+             end
+
+    issues.map { |issue| Issue.assign_complexity(issue) }
   end
 end
