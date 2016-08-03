@@ -4,15 +4,16 @@ class IssuesImportWorker
     repo = Repository.find(repo_id)
 
     issues = repo.get_issues
-    issues.each { |issue|
+    issues.each do |issue|
       issue_info = {
         name: issue[:title],
         description: issue[:body],
         url: issue[:html_url],
-        number: issue[:number]
+        number: issue[:number],
+        complexity: issue[:complexity]
       }
 
       IssuesCreatingWorker.perform_async(issue_info, repo_id)
-    }
+    end
   end
 end

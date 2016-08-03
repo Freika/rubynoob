@@ -15,7 +15,7 @@ Any visitor that sees it in the list of issues will be able to contribute his co
 
 ~~If open issue with label “RubyNoob” is found in the repo, those issues are parsed and added into app database~~
 
-If issue with “RubyNoob” label have either “Beginner”, “Intermediate” or “Proficient” label, it is added to issue record in app as a complexity level
+~~If issue with “RubyNoob” label have either “Beginner”, “Intermediate” or “Proficient” label, it is added to issue record in app as a complexity level~~
 
 If issue state changed to ‘closed’, it is archived
 
