@@ -1,4 +1,6 @@
-RSpec.describe RepositoriesController, type: :controller do
+require 'rails_helper'
+
+describe RepositoriesController, type: :controller do
 
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
