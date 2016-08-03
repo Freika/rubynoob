@@ -17,7 +17,7 @@ Any visitor that sees it in the list of issues will be able to contribute his co
 
 ~~If issue with “RubyNoob” label have either “Beginner”, “Intermediate” or “Proficient” label, it is added to issue record in app as a complexity level~~
 
-If issue state changed to ‘closed’, it is archived
+~~If issue state changed to ‘closed’, it is archived~~
 
 If issue state changed to ‘closed, send email to repo owner and ask him to choose app user who provided solution
 

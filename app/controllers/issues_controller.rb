@@ -1,5 +1,8 @@
 class IssuesController < ApplicationController
   def index
-    @issues = Issue.all.order(created_at: :desc).paginate(page: params[:page])
+    @issues = Issue.includes(:repository)
+                   .opened
+                   .ordered
+                   .paginate(page: params[:page])
   end
 end

@@ -2,7 +2,7 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
 
   def index
-    @repositories = Repository.all.order(created_at: :desc).paginate(page: params[:page])
+    @repositories = Repository.ordered.paginate(page: params[:page])
   end
 
   def show

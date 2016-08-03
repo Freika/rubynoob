@@ -14,6 +14,7 @@
 #
 
 class Issue < ApplicationRecord
+  include Scopable
   COMPLEXITY = %w(beginner intermediate proficient)
   belongs_to :repository
 
@@ -21,11 +22,31 @@ class Issue < ApplicationRecord
 
   enum complexity: [:beginner, :intermediate, :proficient]
 
+  scope :opened, -> { where(closed: false) }
+  scope :closed, -> { where(closed: true) }
+
+  delegate :username, to: :issue, prefix: :owner
+
   def self.assign_complexity(data)
     labels = data[:labels].map { |l| l[:name].downcase }
 
     data[:complexity] = (labels && COMPLEXITY).first.to_sym
 
     data
+  end
+
+  def update_from_github
+    remote_data =
+      Octokit.issue("#{repository.user.username}/#{repository.name}", number)
+
+    update(
+      name: remote_data[:title],
+      description: remote_data[:body],
+      closed: Issue.closed?(remote_data[:state])
+    )
+  end
+
+  def self.closed?(state)
+    state == 'close' ? true : false
   end
 end

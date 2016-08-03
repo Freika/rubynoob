@@ -35,6 +35,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'launchy'
+  gem 'bullet'
 end
 
 group :test do

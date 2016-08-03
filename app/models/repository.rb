@@ -12,10 +12,14 @@
 #
 
 class Repository < ApplicationRecord
+  include Scopable
   belongs_to :user
   has_many :issues
 
   validates :name, uniqueness: { scope: :user_id }
+
+  delegate :username, to: :user, prefix: :owner
+  delegate :email, to: :user, prefix: :owner
 
   def search_on_github(username, repo)
     Octokit.repo("#{username}/#{repo}") rescue nil
