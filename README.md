@@ -18,5 +18,3 @@ Any visitor that sees it in the list of issues will be able to contribute his co
 ~~If issue with “RubyNoob” label have either “Beginner”, “Intermediate” or “Proficient” label, it is added to issue record in app as a complexity level~~
 
 ~~If issue state changed to ‘closed’, it is archived~~
-
-Remove issue if Rubynoob label was removed

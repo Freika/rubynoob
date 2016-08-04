@@ -9,8 +9,7 @@ class IssuesImportWorker
         name: issue[:title],
         description: issue[:body],
         url: issue[:html_url],
-        number: issue[:number],
-        complexity: issue[:complexity]
+        number: issue[:number]
       }
 
       IssuesCreatingWorker.perform_async(issue_info, repo_id)

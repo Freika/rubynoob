@@ -4,4 +4,4 @@ class RepoRunnerJob
   end
 end
 
-Crono.perform(RepoRunnerWorker).every 1.minute
+Crono.perform(RepoRunnerWorker).every 2.minute

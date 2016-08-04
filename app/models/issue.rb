@@ -15,7 +15,6 @@
 
 class Issue < ApplicationRecord
   include Scopable
-  COMPLEXITY = %w(beginner intermediate proficient)
   belongs_to :repository
 
   validates :number, uniqueness: { scope: :repository_id }
@@ -27,19 +26,11 @@ class Issue < ApplicationRecord
 
   delegate :username, to: :issue, prefix: :owner
 
-  def self.assign_complexity(data)
-    labels = data[:labels].map { |l| l[:name].downcase }
-
-    data[:complexity] = (labels && COMPLEXITY).first.to_sym
-
-    data
-  end
-
   def update_from_github
     remote_data =
       Octokit.issue("#{repository.user.username}/#{repository.name}", number)
 
-    is_rubynoob = remote_data[:labels].map{ |l| l[:name] }.include?('RubyNoob')
+    is_rubynoob = Labels.include?('RubyNoob')
 
     if is_rubynoob
       destroy
@@ -49,7 +40,7 @@ class Issue < ApplicationRecord
     update(
       name: remote_data[:title],
       description: remote_data[:body],
-      closed: Issue.closed?(remote_data[:state])
+      closed: Issue.closed?(remote_data[:state]),
     )
   end
 
