@@ -39,6 +39,13 @@ class Issue < ApplicationRecord
     remote_data =
       Octokit.issue("#{repository.user.username}/#{repository.name}", number)
 
+    is_rubynoob = remote_data[:labels].map{ |l| l[:name] }.include?('RubyNoob')
+
+    if is_rubynoob
+      destroy
+      return nil
+    end
+
     update(
       name: remote_data[:title],
       description: remote_data[:body],

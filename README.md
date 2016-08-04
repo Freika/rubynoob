@@ -11,8 +11,6 @@ Any visitor that sees it in the list of issues will be able to contribute his co
 
 ~~User can add his open source repositories (octokit)~~
 
-Parse user's repositories list and allow him to add repos by choosing from list (example: codeclimate)
-
 ~~All added repositories are pinged once in 3 minutes (sidekiq, crono)~~
 
 ~~If open issue with label “RubyNoob” is found in the repo, those issues are parsed and added into app database~~
@@ -21,9 +19,4 @@ Parse user's repositories list and allow him to add repos by choosing from list 
 
 ~~If issue state changed to ‘closed’, it is archived~~
 
-If issue state changed to ‘closed, send email to repo owner and ask him to choose app user who provided solution
-
 Remove issue if Rubynoob label was removed
-
-If repo owner choses user, “Impact” level for this user is increased
-Build rating table for users with high Impact level.
