@@ -14,7 +14,7 @@
 class Repository < ApplicationRecord
   include Scopable
   belongs_to :user
-  has_many :issues
+  has_many :issues, dependent: :destroy
 
   validates :name, uniqueness: { scope: :user_id }
 

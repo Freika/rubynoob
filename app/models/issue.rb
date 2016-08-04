@@ -24,23 +24,14 @@ class Issue < ApplicationRecord
   scope :opened, -> { where(closed: false) }
   scope :closed, -> { where(closed: true) }
 
-  delegate :username, to: :issue, prefix: :owner
-
   def update_from_github
-    remote_data =
+    issue =
       Octokit.issue("#{repository.user.username}/#{repository.name}", number)
 
-    is_rubynoob = Labels.include?('RubyNoob')
-
-    if is_rubynoob
-      destroy
-      return nil
-    end
-
     update(
-      name: remote_data[:title],
-      description: remote_data[:body],
-      closed: Issue.closed?(remote_data[:state]),
+      name: issue[:title],
+      description: issue[:body],
+      closed: Issue.closed?(issue[:state]),
     )
   end
 

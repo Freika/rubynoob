@@ -12,7 +12,9 @@ class IssuesImportWorker
         number: issue[:number]
       }
 
-      IssuesCreatingWorker.perform_async(issue_info, repo_id)
+      unless repo.issues.pluck(:number).include?(issue[:number])
+        IssuesCreatingWorker.perform_async(issue_info, repo_id)
+      end
     end
   end
 end
